@@ -37,10 +37,11 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
-import Notifications from "layouts/notifications";
-import Profile from "layouts/profile";
+// import Tables from "layouts/tables";
+// import Notifications from "layouts/notifications";
+// import Profile from "layouts/profile";
 import FgSection from "screens/FgSection";
+import ProductSales from "screens/Product Sales";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -54,14 +55,14 @@ const routes = [
     route: "/dashboard",
     component: <Dashboard />,
   },
-  {
-    type: "collapse",
-    name: "Tables",
-    key: "tables",
-    icon: <Icon fontSize="small">toc</Icon>,
-    route: "/tables",
-    component: <Tables />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Tables",
+  //   key: "tables",
+  //   icon: <Icon fontSize="small">toc</Icon>,
+  //   route: "/tables",
+  //   component: <Tables />,
+  // },
   // {
   //   type: "collapse",
   //   name: "Billing",
@@ -78,22 +79,22 @@ const routes = [
   //   route: "/rtl",
   //   component: <RTL />,
   // },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
-  },
-  {
-    type: "collapse",
-    name: "Profile",
-    key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
-    component: <Profile />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Notifications",
+  //   key: "notifications",
+  //   icon: <Icon fontSize="small">notifications</Icon>,
+  //   route: "/notifications",
+  //   component: <Notifications />,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "Profile",
+  //   key: "profile",
+  //   icon: <Icon fontSize="small">person</Icon>,
+  //   route: "/profile",
+  //   component: <Profile />,
+  // },
   {
     type: "collapse",
     name: "Finished Goods",
@@ -101,6 +102,14 @@ const routes = [
     icon: <Icon fontSize="small">shoppingcart</Icon>,
     route: "/fgsection",
     component: <FgSection />,
+  },
+  {
+    type: "collapse",
+    name: "Product Outbounds",
+    key: "productsOutbounding",
+    icon: <Icon fontSize="small">input</Icon>,
+    route: "/productsOutbounding",
+    component: <ProductSales />,
   },
 ];
 

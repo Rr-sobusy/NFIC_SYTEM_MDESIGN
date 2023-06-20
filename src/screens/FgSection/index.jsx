@@ -9,15 +9,20 @@ import RGrid from "custom components/RGrid";
 import RColumn from "custom components/RColumn";
 import Card from "./StatsCards/Card";
 import FgTable from "./Fgtable";
-import Floatingbtn from "./FloatingAddBtn/Floatingbtn";
+import Floatingbtn from "../../custom components/Floatingbtn";
 import useFgStore from "./contexts/fgStore";
 import AddFgDialog from "./AddFgDialog/AddFgDialog";
+import dialogStore from "./contexts/dialogStore";
 
 function FgSection() {
   const { fgDatas } = useFgStore();
+  const { handleClickOpen } = dialogStore();
 
   // Filter Products w/ stocks
   const withStocks = fgDatas.filter((items) => items.current_stocks !== "0");
+
+  // Best moving product
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -52,8 +57,8 @@ function FgSection() {
         <RColumn>
           <Card
             child={<StarIcon fontSize="large" />}
-            value="Doggy Woggy Adult"
-            label="Best moving product"
+            value="1"
+            label="Best moving products"
             bgColor="#7757FA"
           />
         </RColumn>
@@ -62,7 +67,7 @@ function FgSection() {
         <h4>Stocks Report</h4>
       </RGrid>
       <FgTable />
-      <Floatingbtn />
+      <Floatingbtn clickHandler={handleClickOpen} />
       <AddFgDialog />
     </DashboardLayout>
   );

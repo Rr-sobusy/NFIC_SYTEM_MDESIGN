@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 const StyledGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-right: 30px;
   gap: 30px;
   margin-top: ${(props) => props.marginTop}px;
   justify-content: ${(props) => props.position};
