@@ -10,10 +10,13 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
+import { useAlert } from "react-alert";
 import useOutboundDialog from "../context/outboundDialog";
 
 function OutboundDialog() {
   const { isOpen, handleClose } = useOutboundDialog();
+
+  const alerting = useAlert();
 
   return (
     <Dialog fullScreen open={isOpen} onClose={handleClose}>
@@ -25,7 +28,13 @@ function OutboundDialog() {
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
             Sound
           </Typography>
-          <Button autoFocus color="inherit" onClick={handleClose}>
+          <Button
+            onClick={() => {
+              alerting.show("rexxxxxxxxxxxxx");
+            }}
+            autoFocus
+            color="inherit"
+          >
             save
           </Button>
         </Toolbar>

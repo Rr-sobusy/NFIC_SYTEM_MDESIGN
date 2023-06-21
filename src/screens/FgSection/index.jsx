@@ -21,8 +21,6 @@ function FgSection() {
   // Filter Products w/ stocks
   const withStocks = fgDatas.filter((items) => items.current_stocks !== "0");
 
-  // Best moving product
-
   return (
     <DashboardLayout>
       <DashboardNavbar />

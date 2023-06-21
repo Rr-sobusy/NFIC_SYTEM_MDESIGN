@@ -9,7 +9,7 @@ import useFgStore from "../contexts/fgStore";
 
 function FgTable() {
   // Shared states
-  const { fgDatas, setFgDatas } = useFgStore();
+  const { fgDatas, setFgDatas, refetch } = useFgStore();
 
   // Fetch datas
   useEffect(() => {
@@ -19,9 +19,10 @@ function FgTable() {
         url: "http://192.168.1.100:3003/api/getproducts",
       });
       setFgDatas(data.data);
+      console.log("refetched");
     }
     fetchDatas();
-  }, []);
+  }, [refetch]);
   return (
     <RGrid marginTop={12}>
       {fgDatas.length !== 0 ? (
@@ -59,7 +60,7 @@ function FgTable() {
         />
       ) : (
         <Box sx={{ display: "grid", width: "100%", justifyContent: "center" }}>
-          <CircularProgress />
+          <CircularProgress color="info" />
         </Box>
       )}
     </RGrid>

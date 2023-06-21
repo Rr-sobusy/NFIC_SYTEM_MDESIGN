@@ -1,19 +1,40 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
 import dialogStore from "../contexts/dialogStore";
+import useFgStore from "../contexts/fgStore";
 
 function AddFgDialog() {
+  // context
   const { isOpen, handleClose } = dialogStore();
 
-  // Form refs
-  const productRef = useRef();
-  const sizeRef = useRef();
-  const initialRef = useRef();
+  // context
+  const { handleRefetch } = useFgStore();
+
+  // Form states
+  const [productNames, setProductName] = useState("");
+  const [packagingSizes, setPackagingSize] = useState(0);
+  const [initialStockss, setInitialStocks] = useState(0);
+
+  const submitHandler = () => {
+    axios({
+      method: "POST",
+      url: "http://192.168.1.100:3003/api/addnewproduct",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      data: {
+        productName: productNames,
+        packagingSize: packagingSizes,
+        initialStocks: initialStockss,
+      },
+    })
+      .then(handleRefetch)
+      .then(handleClose);
+  };
 
   return (
     <Dialog fullWidth="lg" open={isOpen} onClose={handleClose}>
@@ -52,12 +73,27 @@ function AddFgDialog() {
             height: "200px",
           }}
         >
-          <MDInput ref={productRef} fullWidth type="text" label="Product name" />
+          <MDInput
+            onChange={(e) => setProductName(e.target.value)}
+            fullWidth
+            type="text"
+            label="Product name"
+          />
           <Box sx={{ display: "flex", width: "100%", gap: "1rem" }}>
-            <MDInput ref={sizeRef} fullWidth type="number" label="Packaging size" />
-            <MDInput ref={initialRef} fullWidth type="number" label="Initial Stocks" />
+            <MDInput
+              onChange={(e) => setPackagingSize(e.target.value)}
+              fullWidth
+              type="number"
+              label="Packaging size"
+            />
+            <MDInput
+              onChange={(e) => setInitialStocks(e.target.value)}
+              fullWidth
+              type="number"
+              label="Initial Stocks"
+            />
           </Box>
-          <MDButton color="info" variant="contained" fullWidth>
+          <MDButton color="info" onClick={submitHandler} variant="contained" fullWidth>
             Save
           </MDButton>
         </Box>
