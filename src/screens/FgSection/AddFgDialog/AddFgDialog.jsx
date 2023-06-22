@@ -5,6 +5,7 @@ import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { useAlert } from "react-alert";
 import axios from "axios";
 import dialogStore from "../contexts/dialogStore";
 import useFgStore from "../contexts/fgStore";
@@ -21,19 +22,30 @@ function AddFgDialog() {
   const [packagingSizes, setPackagingSize] = useState(0);
   const [initialStockss, setInitialStocks] = useState(0);
 
+  const alertCustom = useAlert();
+
   const submitHandler = () => {
-    axios({
-      method: "POST",
-      url: "http://192.168.1.100:3003/api/addnewproduct",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      data: {
-        productName: productNames,
-        packagingSize: packagingSizes,
-        initialStocks: initialStockss,
-      },
-    })
-      .then(handleRefetch)
-      .then(handleClose);
+    if (productNames && packagingSizes && initialStockss) {
+      axios({
+        method: "POST",
+        url: "http://192.168.1.100:3003/api/addnewproduct",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        data: {
+          productName: productNames,
+          packagingSize: packagingSizes,
+          initialStocks: initialStockss,
+        },
+      })
+        .then(handleRefetch)
+        .then(handleClose)
+        .then(() => {
+          alertCustom.show("New Product Added!");
+        });
+    } else {
+      alertCustom.show("Please fill out the missing fields!", {
+        type: "error",
+      });
+    }
   };
 
   return (

@@ -19,6 +19,7 @@ function OutboundedTable() {
 
   return (
     <DataTable
+      canSearch
       table={{
         columns: [
           { Header: "Date outbounded", accessor: "createdAt", width: "15%" },

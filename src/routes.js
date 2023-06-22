@@ -39,7 +39,6 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 // import Tables from "layouts/tables";
 // import Notifications from "layouts/notifications";
-// import Profile from "layouts/profile";
 import FgSection from "screens/FgSection";
 import ProductSales from "screens/Product Sales";
 
@@ -86,14 +85,6 @@ const routes = [
   //   icon: <Icon fontSize="small">notifications</Icon>,
   //   route: "/notifications",
   //   component: <Notifications />,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Profile",
-  //   key: "profile",
-  //   icon: <Icon fontSize="small">person</Icon>,
-  //   route: "/profile",
-  //   component: <Profile />,
   // },
   {
     type: "collapse",
