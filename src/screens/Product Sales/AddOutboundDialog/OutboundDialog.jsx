@@ -20,14 +20,13 @@ import useOutboundDialog from "../context/outboundDialog";
 import useSalesStore from "../context/salesStore";
 
 function OutboundDialog() {
+  const initialOrders = {
+    id: uuidV4(),
+    productId: "",
+    quantity: null,
+  };
   // Orders state
-  const [orders, setOrders] = useState([
-    {
-      id: uuidV4(),
-      productId: "",
-      quantity: null,
-    },
-  ]);
+  const [orders, setOrders] = useState([initialOrders]);
 
   // Customer Name
   const [custName, setCustName] = useState("");
@@ -38,6 +37,11 @@ function OutboundDialog() {
   const { handleRefetch } = useSalesStore();
 
   const customAlert = useAlert();
+
+  const resetStates = () => {
+    setOrders([initialOrders]);
+    setCustName("");
+  };
 
   const submitHandler = () => {
     // Extract the required json object -- productId and quantity
@@ -56,7 +60,10 @@ function OutboundDialog() {
       .then(() => {
         customAlert.show("Outbounded successfully");
       })
-      .then(handleClose);
+      .then(() => {
+        handleClose();
+        resetStates();
+      });
   };
 
   const addOrderHandler = () => {

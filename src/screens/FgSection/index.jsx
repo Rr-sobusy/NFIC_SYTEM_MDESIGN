@@ -21,6 +21,8 @@ function FgSection() {
   // Filter Products w/ stocks
   const withStocks = fgDatas.filter((items) => items.current_stocks !== "0");
 
+  console.log("rendered");
+
   return (
     <DashboardLayout>
       <DashboardNavbar />

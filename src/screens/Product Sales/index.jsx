@@ -8,6 +8,7 @@ import useOutboundDialog from "./context/outboundDialog";
 
 function ProductSales() {
   const { handleClickOpen } = useOutboundDialog();
+
   return (
     <DashboardLayout>
       <DashboardNavbar />

@@ -20,7 +20,6 @@ function FgTable() {
         url: `${apiUrl}/getproducts`,
       });
       setFgDatas(data.data);
-      console.log("refetched");
     }
     fetchDatas();
   }, [refetch]);
@@ -36,6 +35,7 @@ function FgTable() {
               { Header: "Product Name", accessor: "product_name", width: "25%" },
               { Header: "Packaging Size", accessor: "packaging_size", width: "10%" },
               { Header: "Initial Stocks", accessor: "initial_stocks", width: "12%" },
+              { Header: "repros", accessor: "repros", width: "12%" },
               { Header: "In", accessor: "in", width: "12%" },
               { Header: "out", accessor: "out", width: "12%" },
               { Header: "Current Stocks", accessor: "current_stocks", width: "12%" },
@@ -49,6 +49,7 @@ function FgTable() {
               initial_stocks: items.initial_stocks,
               in: items.in,
               out: items.out,
+              repros: items.repros,
               current_stocks: items.current_stocks,
               action: (
                 <MDButton color="info" variant="text">

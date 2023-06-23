@@ -7,10 +7,10 @@ const useSalesStore = create((set) => ({
     set({
       outboundDatas: datas,
     }),
-  handleRefetch: (datas) =>
-    set({
-      refetch: !datas.refetch,
-    }),
+  handleRefetch: () =>
+    set((state) => ({
+      refetch: !state.refetch,
+    })),
 }));
 
 export default useSalesStore;

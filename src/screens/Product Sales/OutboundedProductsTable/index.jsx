@@ -14,6 +14,7 @@ function OutboundedTable() {
         url: `${apiUrl}/getsales`,
       });
       fetchOutboundData(result.data);
+      console.log("refetch sales");
     }
     fetchOutboundDatas();
   }, [refetch]);
