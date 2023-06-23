@@ -2,20 +2,21 @@ import React from "react";
 import DataTable from "examples/Tables/DataTable";
 import axios from "axios";
 import MDButton from "components/MDButton";
+import apiUrl from "API";
 import useSalesStore from "../context/salesStore";
 
 function OutboundedTable() {
-  const { outboundDatas, fetchOutboundData } = useSalesStore();
+  const { outboundDatas, fetchOutboundData, refetch } = useSalesStore();
   React.useEffect(() => {
     async function fetchOutboundDatas() {
       const result = await axios({
         method: "GET",
-        url: "http://192.168.1.100:3003/api/getsales",
+        url: `${apiUrl}/getsales`,
       });
       fetchOutboundData(result.data);
     }
     fetchOutboundDatas();
-  }, []);
+  }, [refetch]);
 
   return (
     <DataTable

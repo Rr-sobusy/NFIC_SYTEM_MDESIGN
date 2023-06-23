@@ -13,17 +13,25 @@ const StyledInput = styled.input`
   }
 `;
 
-function RInput({ children, type }) {
-  return <StyledInput type={type}>{children}</StyledInput>;
+function RInput({ children, type, onChange, name, value }) {
+  return (
+    <StyledInput value={value} name={name} onChange={onChange} type={type}>
+      {children}
+    </StyledInput>
+  );
 }
 
 RInput.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  value: PropTypes.number.isRequired,
 };
 
 RInput.defaultProps = {
   type: "string",
+  name: "",
 };
 
 export default RInput;

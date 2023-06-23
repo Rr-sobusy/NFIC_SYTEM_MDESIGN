@@ -15,12 +15,23 @@ const StyledSelect = styled.select`
   }
 `;
 
-function RSelect({ children }) {
-  return <StyledSelect>{children}</StyledSelect>;
+function RSelect({ children, onChange, value, name }) {
+  return (
+    <StyledSelect value={value} name={name} onChange={onChange}>
+      {children}
+    </StyledSelect>
+  );
 }
 
 RSelect.propTypes = {
   children: PropTypes.node.isRequired,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  value: PropTypes.number.isRequired,
+};
+
+RSelect.defaultProps = {
+  name: "",
 };
 
 export default RSelect;

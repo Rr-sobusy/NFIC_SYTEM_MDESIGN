@@ -5,6 +5,7 @@ import DataTable from "examples/Tables/DataTable";
 import RGrid from "custom components/RGrid";
 import axios from "axios";
 import MDButton from "components/MDButton";
+import apiUrl from "API";
 import useFgStore from "../contexts/fgStore";
 
 function FgTable() {
@@ -16,7 +17,7 @@ function FgTable() {
     async function fetchDatas() {
       const data = await axios({
         method: "GET",
-        url: "http://192.168.1.100:3003/api/getproducts",
+        url: `${apiUrl}/getproducts`,
       });
       setFgDatas(data.data);
       console.log("refetched");

@@ -7,6 +7,7 @@ import MDButton from "components/MDButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAlert } from "react-alert";
 import axios from "axios";
+import apiUrl from "API";
 import dialogStore from "../contexts/dialogStore";
 import useFgStore from "../contexts/fgStore";
 
@@ -28,7 +29,7 @@ function AddFgDialog() {
     if (productNames && packagingSizes && initialStockss) {
       axios({
         method: "POST",
-        url: "http://192.168.1.100:3003/api/addnewproduct",
+        url: `${apiUrl}/addnewproduct`,
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: {
           productName: productNames,
