@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { PropTypes } from "prop-types";
+import customFont from "../../assets/fonts/Poppins-Regular.ttf";
 
 const StyledSelect = styled.select`
   outline: none;
   width: 13rem;
   height: auto;
   border-radius: 5px;
+  font-weight: 500;
+  color: #353839;
   border-color: #f0f2f5;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 5px 30px 7px 8px;
+  font-family: ${customFont};
+  padding: 8px 30px 10px 8px;
   &:focus {
     border-color: #12a7ee;
   }
