@@ -41,6 +41,7 @@ import Dashboard from "layouts/dashboard";
 // import Notifications from "layouts/notifications";
 import FgSection from "screens/FgSection";
 import ProductSales from "screens/Product Sales";
+import Packagings from "screens/Packagings";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -101,6 +102,14 @@ const routes = [
     icon: <Icon fontSize="small">input</Icon>,
     route: "/productsOutbounding",
     component: <ProductSales />,
+  },
+  {
+    type: "collapse",
+    name: "Packagings",
+    key: "packagings",
+    icon: <Icon fontSize="small">input</Icon>,
+    route: "/packagings",
+    component: <Packagings />,
   },
 ];
 
